@@ -4,7 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/student_model.dart';
 
 class StudentService {
-  static const String baseUrl = "http://localhost:5000/students";
+  static const String baseUrl = "http://192.168.1.109:5000/students";
+
 
   static Future<Student> getStudentById(String id) async {
     final response = await http.get(Uri.parse('$baseUrl/$id'));
