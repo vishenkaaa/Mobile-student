@@ -61,7 +61,7 @@ class StudentService {
   static Future<Student> updateStudent(String id, String email, String surname, String name,
       String className, DateTime dateOfBirth) async {
     final response = await http.put(
-      Uri.parse('$baseUrl/students/$id'),
+      Uri.parse('$baseUrl/$id'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
         'email': email,
@@ -76,7 +76,8 @@ class StudentService {
       final responseData = jsonDecode(response.body);
       return Student.fromJson(responseData['student']);
     } else {
-      throw Exception('Помилка оновлення даних учня');
+      final errorData = jsonDecode(response.body);
+      throw Exception('Помилка оновлення: ${errorData['error']}');
     }
   }
 

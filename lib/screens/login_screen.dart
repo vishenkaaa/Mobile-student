@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:student_app/services/student_service.dart';
 import '../styles/colors.dart';
+import 'package:provider/provider.dart';
+import 'package:student_app/providers/auth_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -23,6 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _login() async {
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
 
     if (email.isEmpty || password.isEmpty) {
       _showSnackbar('Будь ласка, заповніть всі поля');
@@ -36,7 +39,8 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() => _isLoading = true);
 
     try {
-      await StudentService.login(email, password);
+      await authProvider.login(email, password);
+      //await StudentService.login(email, password);
       _showSnackbar('Вхід успішний');
 
       // Перехід на головний екран після входу
