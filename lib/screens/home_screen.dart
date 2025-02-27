@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:student_app/screens/profile_frag.dart';
+import 'package:student_app/screens/teachers_frag.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _screens = [
     Center(child: Text("Розклад"),),
-    Center(child: Text("Вчителі"),),
+    TeacherScreen(),
     Center(child: Text("Оцінки"),),
     ProfileScreen(),
   ];

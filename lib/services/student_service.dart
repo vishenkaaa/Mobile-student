@@ -2,13 +2,14 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/student_model.dart';
+import 'baseUrl.dart';
 
 class StudentService {
-  static const String baseUrl = "http://192.168.1.109:5000/students";
+  static const String url = BaseUrl.baseUrl + 'students';
 
-
+  // Отримати студента за ід
   static Future<Student> getStudentById(String id) async {
-    final response = await http.get(Uri.parse('$baseUrl/$id'));
+    final response = await http.get(Uri.parse('$url/$id'));
 
     if (response.statusCode == 200) {
       return Student.fromJson(jsonDecode(response.body));
@@ -20,7 +21,7 @@ class StudentService {
   // Вхід
   static Future<void> login(String email, String password) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/login'),
+      Uri.parse('$url/login'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'email': email, 'password': password}),
     );
@@ -51,7 +52,7 @@ class StudentService {
     return prefs.getString('token');
   }
 
-  // Отримати учня за ід
+  // Отримати ід учня
   static Future<String?> getStudentId() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString('studentId');
@@ -61,7 +62,7 @@ class StudentService {
   static Future<Student> updateStudent(String id, String email, String surname, String name,
       String className, DateTime dateOfBirth) async {
     final response = await http.put(
-      Uri.parse('$baseUrl/$id'),
+      Uri.parse('$url/$id'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
         'email': email,
@@ -91,7 +92,7 @@ class StudentService {
     }
 
     final response = await http.get(
-      Uri.parse('$baseUrl/grades/export'),
+      Uri.parse('$url/grades/export'),
       headers: {
         'Authorization': 'Bearer $token',
       },
