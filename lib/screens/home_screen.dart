@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:student_app/screens/grade_frag.dart';
 import 'package:student_app/screens/profile_frag.dart';
 import 'package:student_app/screens/schedule_frag.dart';
 import 'package:student_app/screens/teachers_frag.dart';
@@ -15,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _screens = [
     ScheduleScreen(),
     TeacherScreen(),
-    Center(child: Text("Оцінки"),),
+    GradeScreen(),
     ProfileScreen(),
   ];
 

@@ -3,8 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:student_app/providers/auth_provider.dart';
 import 'package:student_app/screens/home_screen.dart';
 import 'package:student_app/screens/login_screen.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('uk', null);
   runApp(
     ChangeNotifierProvider(
       create: (context) => AuthProvider(),

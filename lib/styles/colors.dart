@@ -8,5 +8,4 @@ class AppColors {
   static const Color lightBlue = Color(0xFFC2D8DD);
   static const Color moonstone = Color(0xFF489FB5);
   static const Color carribbeanCurrent = Color(0xFF16697A);
-
 }
