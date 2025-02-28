@@ -97,14 +97,14 @@ class _TeacherScreenState extends State<TeacherScreen> {
               return Column(
                 children: [
                   ListTile(
-                    leading: const Icon(Icons.person, color: AppColors.moonstone),
+                    leading: const Icon(Icons.person, color: AppColors.carribbeanCurrent),
                     title: Text("${teacher.surname} ${teacher.name} ${teacher.fatherName}"),
                     trailing: Icon(isExpanded ? Icons.expand_less : Icons.expand_more),
                     onTap: () => toggleTeacherExpansion(teacher.id),
                   ),
                   if (isExpanded)
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
                       child: isLoading
                           ? const Center(child: CircularProgressIndicator(strokeWidth: 2))
                           : subjects.isEmpty
@@ -118,7 +118,6 @@ class _TeacherScreenState extends State<TeacherScreen> {
                             .toList(),
                       ),
                     ),
-                  const Divider(),
                 ],
               );
             },

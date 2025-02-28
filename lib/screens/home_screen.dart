@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:student_app/screens/profile_frag.dart';
+import 'package:student_app/screens/schedule_frag.dart';
 import 'package:student_app/screens/teachers_frag.dart';
+import 'package:student_app/styles/colors.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
-    Center(child: Text("Розклад"),),
+    ScheduleScreen(),
     TeacherScreen(),
     Center(child: Text("Оцінки"),),
     ProfileScreen(),
@@ -30,6 +32,13 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
+        backgroundColor: AppColors.lightBlue,
+        selectedItemColor: AppColors.carribbeanCurrent,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: true,
+        selectedFontSize: 15,
+        unselectedFontSize: 12,
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.view_timeline_outlined),
@@ -48,9 +57,6 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Профіль',
           ),
         ],
-        selectedItemColor: Colors.deepPurple,
-        unselectedItemColor: Colors.grey,
-        showUnselectedLabels: true,
       ),
     );
   }

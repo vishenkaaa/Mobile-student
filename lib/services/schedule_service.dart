@@ -18,6 +18,9 @@ class ScheduleService {
       headers: {'Authorization': 'Bearer $token'},
     );
 
+    print('Отриманий токен: $token');
+
+
     if (response.statusCode == 200) {
       List<dynamic> data = jsonDecode(response.body);
       return data.map((item) => Schedule.fromJson(item)).toList();
