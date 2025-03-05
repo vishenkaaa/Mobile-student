@@ -81,27 +81,4 @@ class StudentService {
       throw Exception('Помилка оновлення: ${errorData['error']}');
     }
   }
-
-  // Експорт оцінок у док файл
-  static Future<http.Response> exportGradesToWord() async {
-    final prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString('token');
-
-    if (token == null) {
-      throw Exception('Неавторизований доступ');
-    }
-
-    final response = await http.get(
-      Uri.parse('$url/grades/export'),
-      headers: {
-        'Authorization': 'Bearer $token',
-      },
-    );
-
-    if (response.statusCode == 200) {
-      return response;
-    } else {
-      throw Exception('Не вдалося експортувати оцінки');
-    }
-  }
 }

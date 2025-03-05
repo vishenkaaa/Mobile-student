@@ -43,8 +43,6 @@ class _LoginScreenState extends State<LoginScreen> {
       //await StudentService.login(email, password);
       _showSnackbar('Вхід успішний');
 
-      // Перехід на головний екран після входу
-      //Navigator.pushReplacementNamed(context, '/home');
     } catch (e) {
       _showSnackbar('Помилка входу: ${e.toString()}');
     } finally {

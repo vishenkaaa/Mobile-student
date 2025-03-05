@@ -6,10 +6,10 @@ class AuthProvider extends ChangeNotifier {
   bool get isAuthenticated => _isAuthenticated;
 
   AuthProvider() {
-    _checkLoginStatus();
+    checkLoginStatus();
   }
 
-  Future<void> _checkLoginStatus() async {
+  Future<void> checkLoginStatus() async {
     final token = await StudentService.getToken();
     _isAuthenticated = token != null;
     notifyListeners();

@@ -26,4 +26,23 @@ class GradeService {
       throw Exception('Не вдалося завантажити оцінки');
     }
   }
+
+  // Експорт оцінок у док файл
+  static Future<http.Response> exportGradesToWord() async {
+    final token = await StudentService.getToken();
+    if (token == null) throw Exception('Неавторизований доступ');
+
+    final response = await http.get(
+      Uri.parse('${BaseUrl.baseUrl}students/grades/export'),
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return response;
+    } else {
+      throw Exception('Не вдалося експортувати оцінки');
+    }
+  }
 }

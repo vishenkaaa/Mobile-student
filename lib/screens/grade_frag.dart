@@ -160,7 +160,7 @@ class _GradeScreenState extends State<GradeScreen> {
 
   Future<void> _exportGrades() async {
     try {
-      final response = await StudentService.exportGradesToWord();
+      final response = await GradeService.exportGradesToWord();
       final studentId = await StudentService.getStudentId();
       final student = await StudentService.getStudentById(studentId!);
 
